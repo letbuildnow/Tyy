@@ -223,6 +223,7 @@ button {
     background: #860631;
     color: #fff;
     display: block
+    max-width: 22rem;
 }
 
 .error-message {
