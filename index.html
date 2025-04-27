@@ -19,8 +19,29 @@
 
           <div class="formSec">
             <form id="login-form">
-              <input type="email" name="email" placeholder="Email" required />
-              <input type="password" name="password" placeholder="Password" required />
+                       <label for="email">Email Address</label>
+                <div class="formInput">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+
+                <span class="errorMessage"></span>
+
+                <label for="password">Password</label>
+                <div class="formInput">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
 
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="pin.html">
